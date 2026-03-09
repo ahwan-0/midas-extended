@@ -30,5 +30,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  superset:
+    image: apache/superset:latest
+    ports:
+      - "8088:8088"
+    environment:
+      SUPERSET_SECRET_KEY: midas-superset-secret
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
+  superset_data:
